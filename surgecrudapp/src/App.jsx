@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
+import axios from 'axios'
 
 class App extends Component{
     constructor(){
@@ -14,6 +15,15 @@ class App extends Component{
             mobile:'',
             accountType:''
         }
+        this.changeid = this.changeid.bind(this)
+        this.changefirstName = this.changefirstName.bind(this)
+        this.changelastName = this.changelastName.bind(this)
+        this.changeemail = this.changeemail.bind(this)
+        this.changepassword = this.changepassword.bind(this)
+        this.changedateOfBirth = this.changedateOfBirth.bind(this)
+        this.changemobile = this.changemobile.bind(this)
+        this.changeaccountType = this.changeaccountType.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
 
     changeid(event){
@@ -63,13 +73,44 @@ class App extends Component{
             accountType:event.target.value
         })
     }
+
+    onSubmit(event){
+        event.preventDefault()
+
+        const registered = {
+            id: this.state.id,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            dateOfBirth: this.state.dateOfBirth,
+            mobile: this.state.mobile,
+            // status: this.state.status,
+            accountType: this.state.accountType
+        }
+
+        axios.post('http://localhost:4000/app/CreateUser', registered)
+            .then(response => console.log(response.data))
+
+        this.setState({
+            id:'',
+            firstName:'',
+            lastName:'',
+            email:'',
+            password:'',
+            dateOfBirth:'',
+            mobile:'',
+            accountType:''
+        })
+    }
+
     render(){
         return(
             <div>
                 <div className='container '>
                     <div className='form-div'>
-                        <form>
-                            <input type = 'number'
+                        <form onSubmit={this.onSubmit}>
+                            <input type = 'text'
                             placeholder='ID'
                             onChange={this.changeid}
                             value={this.state.id}
@@ -111,7 +152,7 @@ class App extends Component{
                             className='form-control form-group'
                             />
 
-                            <input type = 'number'
+                            <input type = 'text'
                             placeholder='Mobile'
                             onChange={this.changemobile}
                             value={this.state.mobile}

@@ -8,7 +8,8 @@ Content-Type: application/json
     "email":"firnasahamed@protonmail.com",
     "password":"firnas123",
     "dateOfBirth":"12/5/1998",
-    "mobile":"0771234567",
-    "status":"notFirstTime",
+    "mobile":"0771234568",
+    "status":true,
     "accountType":"admin"
 }
+

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const createUserTemplate = new mongoose.Schema({
     id:{
-        type:Number,
+        type:String,
         required:true
     },
     firstName:{
@@ -22,7 +22,7 @@ const createUserTemplate = new mongoose.Schema({
         required:true
     },
     mobile:{
-        type:Number,
+        type:String,
         required:true
     },
     status:{
