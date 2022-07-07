@@ -1,0 +1,14 @@
+POST http://localhost:4000/app/CreateUser
+Content-Type: application/json
+
+{
+    "id":"0001",
+    "firstName":"Firnas",
+    "lastName":"Ahamed",
+    "email":"firnasahamed@protonmail.com",
+    "password":"firnas123",
+    "dateOfBirth":"12/5/1998",
+    "mobile":"0771234567",
+    "status":"notFirstTime",
+    "accountType":"admin"
+}
